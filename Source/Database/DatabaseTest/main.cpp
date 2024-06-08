@@ -1,3 +1,4 @@
+#include "Public/Detail/SQLDatabase.h"
 #include "Public/Detail/SQLOperation.h"
 #include "SQLConnection.h"
 #include "DatabaseWorker.h"
@@ -253,6 +254,9 @@ int main()
 		Res |= GConfig.GetString("Database.Initialization.Password", dbInfo.Password);
 		Res |= GConfig.GetString("Database.Initialization.Schema", dbInfo.Schema);
 		Res |= GConfig.GetUInt("Database.Initialization.Port", dbInfo.Port);
+
+		SQLDatabase Database;
+
 
 		SQLConnection dbConn(dbInfo);
 		char* sql = "SELECT `sex`, `age`, `name` FROM `user` WHERE `id` = ?";
