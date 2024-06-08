@@ -255,7 +255,7 @@ int main()
 		Res |= GConfig.GetString("Database.Initialization.Schema", dbInfo.Schema);
 		Res |= GConfig.GetUInt("Database.Initialization.Port", dbInfo.Port);
 
-		SQLDatabase Database;
+		// SQLDatabase Database;
 
 
 		SQLConnection dbConn(dbInfo);
