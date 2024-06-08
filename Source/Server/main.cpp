@@ -42,6 +42,8 @@ int main()
 		GConfig.GetString("section", "a", b, "config.ini");
 		auto c = configRef.GetKeys("config.ini");
 	}
+
+
 	std::mutex mu;
 	SCOPED_LOCK(mu)
 	{
@@ -49,9 +51,11 @@ int main()
 	};
 
 	{
-		mu.lock();
+		std::lock_guard<std::mutex> lock(mu);
 		printf("idk what happened.\n");
-		mu.unlock();
 	}
+
+
+
 	return 0;
 }
