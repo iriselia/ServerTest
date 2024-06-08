@@ -1,7 +1,5 @@
 
 #include "class.h"
-#include "asio.hpp"
-#include "LoginService.h"
 
 using namespace std;
 
@@ -33,18 +31,16 @@ private:
 
 int main()
 {
-	asio::io_service IoService;
-
+#define GConfig Config::instance()
+	auto& configRef = Config::instance();
 	bool result = GConfig.Load("config.ini");
-	result = GConfig.Load("LoginService.ini");
-	GLoginService.Start(IoService);
 	if (result)
 	{
 		string a = "";
 		GConfig.GetString("section", "a", a, "config.ini");
 		string b;
 		GConfig.GetString("section", "a", b, "config.ini");
-		auto c = GConfig.GetKeys("config.ini");
+		auto c = configRef.GetKeys("config.ini");
 	}
 	std::mutex mu;
 	SCOPED_LOCK(mu)
